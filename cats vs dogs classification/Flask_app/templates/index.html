@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Cats vs Dogs Classifier</title>
+    <style>
+        body { font-family: Arial, sans-serif; max-width: 500px; margin: 60px auto; text-align: center; }
+        .card { border: 1px solid #ddd; border-radius: 10px; padding: 30px; box-shadow: 0 2px 8px rgba(0,0,0,0.08); }
+        img { max-width: 300px; margin-top: 20px; border-radius: 8px; }
+        input[type="submit"] { margin-top: 15px; padding: 8px 20px; cursor: pointer; }
+        .result { margin-top: 20px; font-size: 20px; font-weight: bold; }
+    </style>
+</head>
+<body>
+    <div class="card">
+        <h1>🐱 Cats vs Dogs 🐶</h1>
+        <p>Upload an image to classify it.</p>
+        <form action="/predict" method="post" enctype="multipart/form-data">
+            <input type="file" name="file" accept="image/*" required>
+            <br>
+            <input type="submit" value="Predict">
+        </form>
+        {% if prediction %}
+            <div class="result">Prediction: {{ prediction }}</div>
+        {% endif %}
+        {% if image_path %}
+            <img src="{{ image_path }}" alt="Uploaded image">
+        {% endif %}
+    </div>
+</body>
+</html>
